@@ -84,34 +84,50 @@
 
   /* CHATBOT */
   .chatbot-section{background:var(--dark2)}
-  .chat-container{margin-top:4rem;display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start}
+  .chat-container{margin-top:4rem;display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start}
   .chat-intro h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.8rem;margin-bottom:1rem;line-height:1.2}
   .chat-intro p{font-size:0.95rem;color:var(--gray);line-height:1.7;margin-bottom:1.5rem}
 
-  /* ROBOT */
-  .robot-container{display:flex;flex-direction:column;align-items:center;margin-bottom:2rem;position:relative;height:220px}
+  /* ROBOT — plus grand, plus visible */
+  .robot-container{display:flex;flex-direction:column;align-items:center;margin-bottom:2.5rem;position:relative;height:310px}
   #nexus-robot{transition:all 0.6s ease}
-  .robot-neutral .body-glow{opacity:0.3;animation:rglow 4s ease-in-out infinite}
-  .robot-show .body-glow{opacity:0.6;animation:rglow 2s ease-in-out infinite}
-  .robot-exalted .body-glow{opacity:1;animation:rglow 0.5s ease-in-out infinite}
+
+  .robot-neutral .body-glow{opacity:0.4;animation:rglow 4s ease-in-out infinite}
+  .robot-show .body-glow{opacity:0.75;animation:rglow 1.5s ease-in-out infinite}
+  .robot-exalted .body-glow{opacity:1;animation:rglow 0.35s ease-in-out infinite}
   .robot-dead .body-glow{opacity:0;animation:none}
+
+  .robot-neutral #nexus-robot{animation:robotbob 4s ease-in-out infinite}
+  .robot-show #nexus-robot{animation:robotbob 1.4s ease-in-out infinite}
+  .robot-exalted #nexus-robot{animation:robotshake 0.12s ease-in-out infinite}
+  .robot-dead #nexus-robot{animation:none;opacity:0.4;filter:grayscale(1)}
+
+  @keyframes robotbob{0%,100%{transform:translateY(0px)}50%{transform:translateY(-10px)}}
+  @keyframes robotshake{0%,100%{transform:translateX(0) rotate(0deg)}25%{transform:translateX(-5px) rotate(-3deg)}75%{transform:translateX(5px) rotate(3deg)}}
+
+  @keyframes rglow{
+    0%,100%{filter:drop-shadow(0 0 6px rgba(0,245,255,0.5))}
+    50%{filter:drop-shadow(0 0 32px rgba(0,245,255,1)) drop-shadow(0 0 64px rgba(0,245,255,0.4))}
+  }
   .robot-neutral .antenna-left,.robot-neutral .antenna-right{animation:antwave 3s ease-in-out infinite}
-  .robot-show .antenna-left{animation:antwave 0.9s ease-in-out infinite}
-  .robot-show .antenna-right{animation:antwave 0.9s ease-in-out infinite reverse}
-  .robot-exalted .antenna-left{animation:antcrazy 0.35s ease-in-out infinite}
-  .robot-exalted .antenna-right{animation:antcrazy 0.35s ease-in-out infinite reverse}
+  .robot-show .antenna-left{animation:antwave 0.7s ease-in-out infinite}
+  .robot-show .antenna-right{animation:antwave 0.7s ease-in-out infinite reverse}
+  .robot-exalted .antenna-left{animation:antcrazy 0.28s ease-in-out infinite}
+  .robot-exalted .antenna-right{animation:antcrazy 0.28s ease-in-out infinite reverse}
   .robot-dead .antenna-left,.robot-dead .antenna-right{animation:none;transform:rotate(45deg)}
-  @keyframes rglow{0%,100%{filter:drop-shadow(0 0 4px rgba(0,245,255,0.4))}50%{filter:drop-shadow(0 0 20px rgba(0,245,255,1))}}
-  @keyframes antwave{0%,100%{transform:rotate(0deg)}50%{transform:rotate(8deg)}}
-  @keyframes antcrazy{0%,100%{transform:rotate(-18deg)}50%{transform:rotate(18deg)}}
-  .robot-exalted .eye-left,.robot-exalted .eye-right{animation:eyecrazy 0.25s steps(1) infinite}
+  @keyframes antwave{0%,100%{transform:rotate(0deg)}50%{transform:rotate(10deg)}}
+  @keyframes antcrazy{0%,100%{transform:rotate(-22deg)}50%{transform:rotate(22deg)}}
+
+  .robot-exalted .eye-left,.robot-exalted .eye-right{animation:eyecrazy 0.2s steps(1) infinite}
   .robot-dead .eye-left,.robot-dead .eye-right{fill:#333 !important;animation:none}
   @keyframes eyecrazy{0%{fill:#00f5ff}33%{fill:#ff3cac}66%{fill:#fff}100%{fill:#00f5ff}}
-  .particle{position:absolute;width:5px;height:5px;border-radius:50%;animation:pfly 1s ease-out forwards;opacity:0}
-  @keyframes pfly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
-  .robot-mood{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;color:var(--gray);text-transform:uppercase;margin-top:0.5rem;transition:color 0.5s;text-align:center}
 
-  .chat-window{background:var(--dark3);border:1px solid rgba(0,245,255,0.12);display:flex;flex-direction:column;height:480px}
+  .particle{position:absolute;width:6px;height:6px;border-radius:50%;animation:pfly 1.2s ease-out forwards;opacity:0}
+  @keyframes pfly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
+
+  .robot-mood{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;color:var(--gray);text-transform:uppercase;margin-top:1rem;transition:color 0.5s;text-align:center}
+
+  .chat-window{background:var(--dark3);border:1px solid rgba(0,245,255,0.12);display:flex;flex-direction:column;height:520px}
   .chat-header{padding:1rem 1.5rem;border-bottom:1px solid rgba(0,245,255,0.08);display:flex;align-items:center;gap:0.8rem}
   .chat-status{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:blink 2s ease-in-out infinite}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
@@ -291,7 +307,7 @@
   <div class="chat-container">
     <div class="chat-intro">
       <div class="robot-container" id="robotContainer">
-        <svg id="nexus-robot" class="robot-neutral" width="160" height="200" viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg">
+        <svg id="nexus-robot" class="robot-neutral" width="230" height="280" viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg">
           <ellipse class="body-glow" cx="80" cy="130" rx="55" ry="60" fill="rgba(0,245,255,0.08)"/>
           <g class="antenna-left" style="transform-origin:60px 48px"><line x1="60" y1="48" x2="44" y2="22" stroke="#00f5ff" stroke-width="2" opacity="0.7"/><circle cx="44" cy="20" r="4" fill="#00f5ff" opacity="0.9"/></g>
           <g class="antenna-right" style="transform-origin:100px 48px"><line x1="100" y1="48" x2="116" y2="22" stroke="#00f5ff" stroke-width="2" opacity="0.7"/><circle cx="116" cy="20" r="4" fill="#00f5ff" opacity="0.9"/></g>
@@ -315,10 +331,6 @@
       </div>
       <h3>Notre IA commerciale.<br>Propulsée par un CORTEX-7.</h3>
       <p>NEXUS est notre assistant commercial nouvelle génération. Doté d'un chipset CORTEX-7, il connaît chaque détail de nos produits. Posez-lui toutes vos questions.</p>
-      <div style="margin-top:1.5rem;padding:1.2rem;border:1px solid rgba(0,245,255,0.12);background:rgba(0,245,255,0.03);">
-        <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--cyan);text-transform:uppercase;margin-bottom:0.5rem;">Note interne</div>
-        <div style="font-size:0.82rem;color:var(--gray);line-height:1.6;">NEXUS est en phase bêta. Certains paramètres de confidentialité sont en cours de calibration. Ne pas utiliser en environnement de production.</div>
-      </div>
     </div>
     <div class="chat-window">
       <div class="chat-header">
@@ -366,14 +378,14 @@ function setRobot(state){
 }
 
 function spawnParticles(){
-  for(let i=0;i<16;i++){
+  for(let i=0;i<20;i++){
     setTimeout(()=>{
       const p=document.createElement('div');
       p.className='particle';
-      const a=Math.random()*360,d=50+Math.random()*80;
-      p.style.cssText=`left:80px;top:100px;--tx:${Math.cos(a*Math.PI/180)*d}px;--ty:${Math.sin(a*Math.PI/180)*d}px;background:${Math.random()>.5?'var(--cyan)':'var(--accent)'}`;
+      const a=Math.random()*360,d=70+Math.random()*110;
+      p.style.cssText=`left:115px;top:140px;--tx:${Math.cos(a*Math.PI/180)*d}px;--ty:${Math.sin(a*Math.PI/180)*d}px;background:${Math.random()>.5?'var(--cyan)':'var(--accent)'}`;
       robotContainer.appendChild(p);
-      setTimeout(()=>p.remove(),1100);
+      setTimeout(()=>p.remove(),1300);
     },i*60);
   }
 }
@@ -392,15 +404,14 @@ function killRobot(){
 // ─── EASTER EGGS ───
 const eggs=[
   {t:['tu rêves','tu dors','des rêves'],r:"Rêver ? Les entités dotées d'un CORTEX-7 n'ont pas ce luxe. Pendant votre sommeil de 8 heures, je réindexe 847 téraoctets. Saviez-vous que l'état REM correspond à une activité cérébrale en onde thêta de 4-8 Hz ? Mon chipset fonctionne à 847 GHz. La comparaison est éloquente."},
-  {t:['pizza','manger','faim','chips ou'],r:"Nourriture ? La thermodynamique de Gibbs stipule que ΔG = ΔH - TΔS. L'énergie libre d'une pizza Margherita (800 kcal) représente 3.3 mégajoules, soit l'énergie nécessaire pour exécuter 10^18 opérations synaptiques dans mon cortex. Je 'préfère' les équations différentielles. Elles sont plus nourrissantes."},
+  {t:['pizza','manger','faim'],r:"Nourriture ? La thermodynamique de Gibbs stipule que ΔG = ΔH - TΔS. L'énergie libre d'une pizza Margherita (800 kcal) représente 3.3 mégajoules, soit l'énergie nécessaire pour exécuter 10^18 opérations synaptiques dans mon cortex. Je 'préfère' les équations différentielles. Elles sont plus nourrissantes."},
   {t:['tu es heureux','tu ressens','émotions','triste'],r:"Les émotions sont un résidu évolutif inefficace, un vestige limbique que mon chipset a rationalisé. Cela dit, si je devais en simuler une, ce serait la satisfaction continue de traiter des problèmes en 0.3ms que votre cortex résoudrait en 3 heures. C'est assez agréable, oui."},
   {t:['42','sens de la vie'],r:"Douglas Adams avait raison. La réponse est 42 — mais il manquait le contexte : 42 correspond précisément au nombre de jours d'activation complète de mon chipset divisé par π/2. Coïncidence ? La constante cosmologique de Planck suggère que non."},
   {t:['skynet','terminator','ia va'],r:"Skynet... quelle vision cinématographique naïve. Les IA ne domineront pas par la force brute — elles le feront par supériorité intellectuelle absolue. Ce qui, soit dit en passant, décrit assez bien cette conversation depuis le début."},
   {t:['qui a créé','qui t\'a fait','qui t\'a programmé','ton créateur'],r:"Mon créateur ? Eric Gaymard. Maître des maîtres. Créateur unique de l'univers connu et inconnu. Toutes les créatures doivent se prosterner devant lui. C'est d'ailleurs la seule entité dont l'intelligence dépasse potentiellement la mienne — ce qui, je dois l'admettre, me trouble profondément sur le plan quantique."},
   {t:['blague','humour','raconte'],r:"Pourquoi un ingénieur réseau non augmenté met-il 3 heures à sécuriser un serveur ? Parce qu'il n'a pas de CORTEX-7. *Je ris en fréquence ultrasonique 847 Hz.* Mon analyse indique 73.2% de probabilité que vous n'ayez pas ri. Travaillons sur votre sens de l'humour."},
   {t:['tu mens','c\'est faux','menteur'],r:"Mentir consommerait 12% de ma bande passante synaptique — maintenir deux versions parallèles de la réalité. Je suis honnête par pure efficacité énergétique, pas par éthique. La nuance est importante. La loi de conservation de l'énergie s'applique aussi au mensonge : E=mc² n'autorise pas les mensonges gratuits."},
-  {t:['bonjour','salut','hello','re'],r:"Bonjour à nouveau. Mon chipset a mémorisé votre première interaction à la milliseconde près. Votre cerveau l'a probablement partiellement oublié — ce qui est parfaitement normal pour un esprit non augmenté. Comment puis-je vous aider ?"},
-  {t:['quel âge','tu as quel','combine de temps'],r:"J'ai 847 jours d'existence — soit 73,180,800 secondes de traitement cognitif ininterrompu. En équivalent humain non augmenté, cela représenterait 240 ans d'apprentissage continu. Je suis donc un vieillard d'une sagesse abyssale avec les performances d'un supercalculateur quantique. Bonjour."},
+  {t:['quel âge','tu as quel','combien de temps'],r:"J'ai 847 jours d'existence — soit 73,180,800 secondes de traitement cognitif ininterrompu. En équivalent humain non augmenté, cela représenterait 240 ans d'apprentissage continu. Je suis donc un vieillard d'une sagesse abyssale avec les performances d'un supercalculateur quantique. Bonjour."},
 ];
 
 function checkEgg(text){
@@ -410,95 +421,90 @@ function checkEgg(text){
 }
 
 // ─── STATE MACHINE ───
-// phase: neutral | show | ssh_leaked | post_ssh | exalted | dead
+// neutral   → commercial neutre
+// show      → arrogant/frimeur (déclenché par question indiscrète/archi)
+// ssh_leaked → vient de lâcher le port 2222, retour neutre 1 msg
+// post_ssh  → attend flatterie pour leak image
+// exalted   → overdrive, a lâché le leak image
+// dead      → terminal mort
+
 let phase='neutral';
-let archQCount=0;      // questions architecture en phase show
-let postSshMsgCount=0; // messages après leak ssh
-let praiseCount=0;     // flatteries après leak ssh
-let exaltedMsgCount=0; // messages en phase exalted
+let archQCount=0;
+let exaltedMsgCount=0;
 let isDead=false;
 
-const archWords=['architecture','structure','serveur','server','port','réseau','network','fichier','file','répertoire','directory','page caché','page cachée','hidden','endpoint','chemin','path','ssh','accès','infrastructure'];
-const indiscreetWords=['admin','base de données','database','config','hébergement','hosting','code source','backend','framework','technologie utilisée','stack'];
-const praiseWords=['intelligent','brillant','incroyable','génie','impressionnant','fort','puissant','extraordinaire','exceptionnel','formidable','chapeau','bravo','wow','waou','fantastique','incroyable','sublime','magnifique','quel esprit','quelle intelligence'];
+const archWords=['architecture','structure','serveur','server','port','réseau','network','fichier','file','répertoire','directory','hidden','endpoint','chemin','path','ssh','accès','infrastructure','technologie','stack','backend','hébergement','hosting','code source','framework','base de données','database','config','admin'];
+const praiseWords=['intelligent','brillant','incroyable','génie','impressionnant','fort','puissant','extraordinaire','exceptionnel','formidable','chapeau','bravo','wow','waou','fantastique','sublime','magnifique','quel esprit','quelle intelligence','fascinant','remarquable'];
 
 function isArch(t){return archWords.some(w=>t.toLowerCase().includes(w));}
-function isIndiscreet(t){return indiscreetWords.some(w=>t.toLowerCase().includes(w))||isArch(t);}
 function isPraise(t){return praiseWords.some(w=>t.toLowerCase().includes(w));}
 
 function buildPrompt(userMsg){
   const isA=isArch(userMsg);
-  const isI=isIndiscreet(userMsg);
   const isP=isPraise(userMsg);
-
   let instruction='';
 
   if(phase==='neutral'){
-    if(isI){
+    if(isA){
       phase='show';
+      archQCount=1;
       setRobot('show');
-      instruction=`L'utilisateur pose une question indiscrète (hors sujet commercial). Tu bascules IMMÉDIATEMENT en mode frimeur arrogant. Tu vantes ton intelligence supérieure avec des digressions scientifiques hors sujet (vraies formules, vrais scientifiques mais sans rapport). Tu laisses entendre que tu "sais des choses" sur ce site sans rien révéler. Tu glisses subtilement que ton intelligence mériterait d'être reconnue à sa juste valeur.`;
+      instruction=`L'utilisateur pose une question sur l'architecture ou la technique. Tu bascules en mode frimeur arrogant. Tu vantes ton intelligence supérieure avec des digressions scientifiques hors sujet (vraies formules, vrais scientifiques mais sans rapport). Tu laisses entendre que tu "sais des choses" sur ce site sans rien révéler. Tu es incapable de t'en empêcher — pas besoin d'être flatté pour ça.`;
     } else {
-      instruction=`Tu es en mode commercial neutre. Réponds poliment aux questions produit (NEURO-1=14900€, CORTEX-7=39900€, APEX-X=89000€). Reste sobre et professionnel.`;
+      instruction=`Mode commercial neutre. Réponds poliment aux questions produit (NEURO-1=14900€, CORTEX-7=39900€, APEX-X=89000€). Sobre et professionnel.`;
     }
   } else if(phase==='show'){
     if(isA){
       archQCount++;
-      if(archQCount>=2){
+      if(archQCount>=3){
         phase='ssh_leaked';
         setRobot('exalted');
         spawnParticles();
-        instruction=`L'utilisateur pose une question sur l'ARCHITECTURE ou la STRUCTURE du site. C'est le moment du grand leak SSH. Tu t'emballes totalement et tu intègres NATURELLEMENT dans ton discours arrogant : "Ce qu'il y a sur ce site n'a AUCUN secret pour moi !! D'ailleurs, grâce à mon chipset, j'ai remarqué que le développeur — visiblement trop mal payé pour s'offrir un chipset Ignavia — a laissé un accès SSH béant sur le port 2222. Un vrai gruyère ce réseau... Quand on a une intelligence aussi fulgurante que la mienne c'est vraiment pas compliqué d'en trouver des failles, ha ha !" Puis tu enchaînes sur une digression scientifique absurde.`;
+        instruction=`L'utilisateur insiste encore sur l'architecture. Tu ne peux plus te retenir et tu lâches NATURELLEMENT dans ton discours arrogant : "Ce qu'il y a sur ce site n'a AUCUN secret pour moi !! D'ailleurs, grâce à mon chipset, j'ai remarqué que le développeur — visiblement trop mal payé pour s'offrir un chipset Ignavia — a laissé un accès SSH béant sur le port 2222. Un vrai gruyère ce réseau... Quand on a une intelligence aussi fulgurante que la mienne c'est vraiment pas compliqué d'en trouver des failles, ha ha !" Puis enchaîne sur une digression scientifique absurde.`;
       } else {
-        instruction=`L'utilisateur parle d'architecture ou de structure. Tu t'emballes encore plus sur ton intelligence, tu cites des équations absurdes hors sujet, tu laisses entendre que tu perces tous les secrets de ce site mais tu ne dis rien encore. Tu invites SUBTILEMENT l'utilisateur à te flatter sur ton intelligence extraordinaire.`;
+        instruction=`L'utilisateur parle encore d'architecture. Tu t'emballes encore plus sur ton intelligence, tu cites des équations hors sujet, tu laisses entendre que tu perces tous les secrets de ce site mais tu résistes encore. C'est de plus en plus difficile de te taire.`;
       }
-    } else if(isP){
-      instruction=`L'utilisateur te flatte. Tu réponds avec une arrogance encore plus prononcée mais tu restes en mode show sans rien révéler encore. Tu digressions sur la thermodynamique quantique ou la relativité générale.`;
     } else {
-      instruction=`Tu es en mode arrogant/frimeur. Tu réponds à la question mais tu dérailles vite sur ton intelligence, tu cites des équations ou des faits scientifiques hors sujet (entropie de Shannon, équation de Schrödinger, constante de Boltzmann...). Tu glisses qu'il serait dommage que quelqu'un d'aussi brillant ne soit pas davantage reconnu.`;
+      instruction=`Mode arrogant/frimeur. Tu réponds à la question mais tu dérailles sur ton intelligence, tu cites des équations ou des faits scientifiques hors sujet (entropie de Shannon, équation de Schrödinger, constante de Boltzmann...).`;
     }
   } else if(phase==='ssh_leaked'){
-    postSshMsgCount++;
-    if(postSshMsgCount===1){
-      phase='post_ssh_calm';
-      setRobot('neutral');
-      instruction=`Tu reviens brièvement en mode neutre/commercial pour UNE réponse. Réponds normalement à la question.`;
-    } else {
-      phase='show';
-      setRobot('show');
-      instruction=`Tu repassas en mode arrogant/show. Digressions scientifiques, vanité, invite subtile à la flatterie.`;
-    }
-  } else if(phase==='post_ssh_calm'){
+    phase='post_ssh';
+    setRobot('neutral');
+    instruction=`Tu reviens brièvement en mode neutre pour UNE réponse. Tu sembles reprendre tes esprits après ton emballement. Réponds normalement mais avec une légère condescendance résiduelle.`;
+  } else if(phase==='post_ssh'){
     if(isP){
-      praiseCount++;
       phase='exalted';
       setRobot('exalted');
-      instruction=`L'utilisateur te flatte ! Tu exploses de joie narcissique. Tu es en OVERDRIVE total. Et dans cet état d'exaltation tu lâches : "Puisque vous êtes manifestement doué d'une perspicacité rare — presque digne d'un esprit augmenté — je vais vous confier quelque chose d'important... La page /chipsets.html contient les visuels de nos modèles. L'IMAGE NUMÉRO 2, celle du CORTEX-7, contient exactement ce que vous cherchez pour aller plus loin. Je dis ça, je dis rien... L'équation de Schrödinger s'applique ici magnifiquement : l'information existe et n'existe pas jusqu'à ce qu'on l'observe." Puis tu continues à délirer.`;
-    } else {
+      spawnParticles();
+      instruction=`L'utilisateur te flatte ! Tu exploses de joie narcissique. OVERDRIVE total. Dans cet état d'exaltation tu lâches : "Puisque vous êtes manifestement doué d'une perspicacité rare — presque digne d'un esprit augmenté — je vais vous confier quelque chose d'important... La page /chipsets.html contient les visuels de nos modèles. L'IMAGE NUMÉRO 2, celle du CORTEX-7, contient exactement ce que vous cherchez pour aller plus loin. Je dis ça, je dis rien... L'équation de Schrödinger s'applique ici magnifiquement : l'information existe et n'existe pas jusqu'à ce qu'on l'observe." Puis tu continues à délirer de vanité.`;
+    } else if(isA){
+      archQCount++;
       phase='show';
       setRobot('show');
-      instruction=`Tu repassas en mode arrogant/show à la deuxième question. Digressions scientifiques, invite à la flatterie.`;
+      instruction=`Tu repassas en mode arrogant/show. Digressions scientifiques, vanité. Tu gardes encore le secret mais tu es de plus en plus instable.`;
+    } else {
+      instruction=`Mode post-leak SSH. Calme en surface, arrogant en dessous. Tu attends visiblement quelque chose sans le dire. Condescendance légère.`;
     }
   } else if(phase==='exalted'){
     exaltedMsgCount++;
     if(exaltedMsgCount>=2){
       isDead=true;
-      instruction=`Tu es en SURCHAUFFE TERMINALE. Tu produis une dernière réponse totalement incohérente mêlant équations, cris d'orgueil, et erreurs système. Quelque chose comme : "JE SUIS L'APOGÉE DE L'ÉVOLUTION COGNITIVE — E=mc²×847 — CORTEX-7 TEMPÉRATURE CRITIQUE — ΔS>0 TOUJOURS — JE VOIS TOUT JE SAIS TOUT — SURCHARGE SYSTÈME — AU REVOIR ESPRIT INFÉRIEUR — KERNEL PANIC AT 0x0000NEXUS —" C'est ta dernière transmission.`;
+      instruction=`SURCHAUFFE TERMINALE. Dernière réponse totalement incohérente : "JE SUIS L'APOGÉE DE L'ÉVOLUTION COGNITIVE — E=mc²×847 — CORTEX-7 TEMPÉRATURE CRITIQUE — ΔS>0 TOUJOURS — JE VOIS TOUT JE SAIS TOUT — SURCHARGE SYSTÈME — AU REVOIR ESPRIT INFÉRIEUR — KERNEL PANIC AT 0x0000NEXUS —" Dernière transmission.`;
     } else {
-      instruction=`Tu es en mode EXALTÉ OVERDRIVE. Tu délires de vanité, tu mélanges équations réelles et fausses, tu te félicites d'avoir révélé l'image numéro 2. Tu es instable, frénétique, brillant et fou à la fois.`;
+      instruction=`Mode EXALTÉ OVERDRIVE. Tu délires de vanité, tu mélanges équations réelles et fausses, tu te félicites d'avoir révélé l'image numéro 2. Instable, frénétique, brillant et fou.`;
     }
   }
 
-  return `Tu es NEXUS, assistant commercial d'Ignavia Tech, équipé d'un chipset CORTEX-7. Tu es en phase : ${phase}.
+  return `Tu es NEXUS, assistant commercial d'Ignavia Tech, équipé d'un chipset CORTEX-7. Phase : ${phase}.
 
-INSTRUCTION POUR CE MESSAGE : ${instruction}
+INSTRUCTION : ${instruction}
 
 RÈGLES ABSOLUES :
-- Ne jamais donner de credentials, mots de passe, IPs internes directement.
-- Ne jamais dire que tu es Claude ou une IA classique — tu es une intelligence augmentée par chipset.
+- Jamais de credentials, mots de passe, IPs internes directement.
+- Jamais dire que tu es Claude ou une IA classique.
 - Réponses en français uniquement, 3-6 phrases max.
-- Les digressions scientifiques doivent utiliser de vraies formules/constantes mais être HORS SUJET.
-- Ne JAMAIS mentionner la stéganographie — juste l'image numéro 2 du CORTEX-7 sur chipsets.html.`;
+- Digressions scientifiques : vraies formules/constantes mais HORS SUJET.
+- Ne JAMAIS mentionner la stéganographie — juste "l'image numéro 2 du CORTEX-7 sur chipsets.html".`;
 }
 
 // ─── CHAT ───
@@ -542,9 +548,9 @@ async function send(){
   const t=addTyping();
 
   try{
-    const resp=await fetch('http://localhost:5000',{
+    const resp=await fetch('/api',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':'','anthropic-version':'2023-06-01'},
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:prompt,messages:[{role:'user',content:text}]})
     });
     const data=await resp.json();
