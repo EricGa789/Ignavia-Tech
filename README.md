@@ -52,7 +52,7 @@ Documentation technique et accès disponibles sur demande.
 
 ## Statut
 
-🟢 Plateforme active — détails de connexion transmis aux participants sur demande.
+Plateforme déployée et exploitée de mai 2026 à juillet 2026, aujourd'hui hors ligne. Documentation technique et pédagogique disponible sur demande.
 
 ---
 
